@@ -1,9 +1,15 @@
 {
   "id": "2",
   "name": "Whisler's",
+  "slug": "whislers",
   "address": "1816 E 6th St, Austin, TX 78702",
   "description": "Rustic bar in a historic building with craft cocktails, a mezcal bar upstairs, and a spacious patio.",
   "rating": 4.5,
+  "ratings": {
+    "google": 4.5,
+    "yelp": 4.4,
+    "internal": 4.6
+  },
   "imageUrl": "https://images.unsplash.com/photo-1470337458703-46ad1756a187?q=80&w=1000",
   "hasHappyHour": true,
   "happyHourDetails": "Monday-Friday, 4-6pm: $2 off all drinks",
@@ -16,9 +22,18 @@
     "Saturday": "2pm-2am",
     "Sunday": "2pm-12am"
   },
-  "tags": ["Craft Cocktails", "Patio", "Mezcal"],
+  "tags": [
+    "Craft Cocktails",
+    "Patio",
+    "Mezcal"
+  ],
   "location": {
     "lat": 30.262097,
     "lng": -97.724467
-  }
+  },
+  "type": "",
+  "priceRange": 2,
+  "neighborhood": "",
+  "features": [],
+  "zipCode": "78702"
 }

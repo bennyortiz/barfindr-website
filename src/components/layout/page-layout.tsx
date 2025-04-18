@@ -10,9 +10,9 @@
 "use client";
 
 import React from 'react';
-import Navbar from '@/components/layout/Navbar';
-import Footer from '@/components/layout/Footer';
-import { Container } from '@/components/ui/container';
+import Navbar from '@/core/components/layout/Navbar';
+import Footer from '@/core/components/layout/Footer';
+import { Container } from '@/core/components/ui/container';
 import { cn } from '@/lib/utils';
 
 interface PageLayoutProps {

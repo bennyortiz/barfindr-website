@@ -1,7 +1,7 @@
 "use client";
 
-import { PageLayout } from "@/components/layout/page-layout";
-import { TabsWithCard } from "@/components/ui/tabs-with-card";
+import { PageLayout } from "@/core/components/layout/PageLayout";
+import { TabsWithCard } from "@/core/components/ui/tabs-with-card";
 import { BarDetailTabs } from "@/components/BarDetailTabs";
 import { bars } from "@/lib/data";
 

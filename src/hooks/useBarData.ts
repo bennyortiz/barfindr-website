@@ -7,7 +7,7 @@
 
 import { useState, useMemo } from "react";
 import { Bar } from "@/lib/types";
-import { getCurrentDay } from "@/utils/date-utils";
+import { getCurrentDay } from "@/core/utils/date-utils";
 
 type SortOption = "default" | "rating-high" | "rating-low" | "name-asc" | "name-desc";
 

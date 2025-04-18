@@ -2,8 +2,8 @@
 
 import React from 'react';
 import { Bar } from "@/lib/types";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/core/components/ui/card";
+import { Badge } from "@/core/components/ui/badge";
 import { MapPin, Star, Clock } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";

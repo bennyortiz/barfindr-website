@@ -1,9 +1,15 @@
 {
   "id": "3",
   "name": "Rainey Street Bars",
+  "slug": "rainey-street-bars",
   "address": "Rainey St, Austin, TX 78701",
   "description": "Historic district with bungalow houses converted into unique bars with outdoor spaces.",
   "rating": 4.6,
+  "ratings": {
+    "google": 4.7,
+    "yelp": 4.5,
+    "internal": 4.6
+  },
   "imageUrl": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?q=80&w=1000",
   "hasHappyHour": true,
   "happyHourDetails": "Varies by bar, typically 4-7pm on weekdays",
@@ -16,9 +22,18 @@
     "Saturday": "Varies by bar",
     "Sunday": "Varies by bar"
   },
-  "tags": ["Bar District", "Outdoor", "Live Music"],
+  "tags": [
+    "Bar District",
+    "Outdoor",
+    "Live Music"
+  ],
   "location": {
     "lat": 30.258087,
     "lng": -97.738469
-  }
+  },
+  "type": "",
+  "priceRange": 2,
+  "neighborhood": "",
+  "features": [],
+  "zipCode": "78701"
 }

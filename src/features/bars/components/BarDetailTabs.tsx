@@ -6,13 +6,13 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/core/components/ui/t
 import {
   Clock,
   MapPin,
-  Star,
   Users,
   Utensils,
   Music,
   Calendar,
   MessageSquare
 } from "lucide-react"
+import { BarRatings } from "./BarRatings"
 import { Bar } from "@/lib/types"
 
 interface BarDetailTabsProps {
@@ -50,9 +50,9 @@ export function BarDetailTabs({ bar }: BarDetailTabsProps) {
                   <span>{bar.address}</span>
                 </div>
 
-                <div className="flex items-center gap-2">
-                  <Star className="size-5 text-primary" />
-                  <span>Rating: {bar.rating}/5</span>
+                <div className="mt-2">
+                  <h4 className="font-medium mb-3">Ratings</h4>
+                  <BarRatings bar={bar} showDetailed={true} className="max-w-xs" />
                 </div>
 
                 <div className="flex items-center gap-2">

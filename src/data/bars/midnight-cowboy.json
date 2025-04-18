@@ -1,9 +1,15 @@
 {
   "id": "4",
   "name": "Midnight Cowboy",
+  "slug": "midnight-cowboy",
   "address": "313 E 6th St, Austin, TX 78701",
   "description": "Reservation-only speakeasy with craft cocktails served in an intimate, vintage setting.",
   "rating": 4.8,
+  "ratings": {
+    "google": 4.7,
+    "yelp": 4.8,
+    "internal": 4.9
+  },
   "imageUrl": "https://images.unsplash.com/photo-1470337458703-46ad1756a187?q=80&w=1000",
   "hasHappyHour": false,
   "openingHours": {
@@ -15,9 +21,18 @@
     "Saturday": "5pm-2am",
     "Sunday": "5pm-12am"
   },
-  "tags": ["Speakeasy", "Reservations Required", "Craft Cocktails"],
+  "tags": [
+    "Speakeasy",
+    "Reservations Required",
+    "Craft Cocktails"
+  ],
   "location": {
     "lat": 30.267244,
     "lng": -97.739465
-  }
+  },
+  "type": "",
+  "priceRange": 2,
+  "neighborhood": "",
+  "features": [],
+  "zipCode": "78701"
 }

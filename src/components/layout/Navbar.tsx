@@ -10,12 +10,12 @@
 "use client";
 
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/core/components/ui/button";
 import { Menu, Search, X } from "lucide-react";
-import { Input } from "@/components/ui/input";
+import { Input } from "@/core/components/ui/input";
 import { useState, useEffect, FormEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Container } from "@/components/ui/container";
+import { Container } from "@/core/components/ui/container";
 import { useRouter } from "next/navigation";
 
 export default function Navbar() {

@@ -8,8 +8,8 @@
  */
 
 import { Bar } from "@/lib/types";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/core/components/ui/card";
+import { Badge } from "@/core/components/ui/badge";
 import { MapPin, Star, Clock } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";

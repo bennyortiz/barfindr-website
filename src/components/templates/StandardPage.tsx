@@ -1,8 +1,8 @@
 "use client";
 
 import React from 'react';
-import { PageLayout } from '@/components/layout/page-layout';
-import { Container } from '@/components/ui/container';
+import { PageLayout } from '@/core/components/layout/page-layout';
+import { Container } from '@/core/components/ui/container';
 import { cn } from '@/lib/utils';
 
 interface StandardPageProps {

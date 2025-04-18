@@ -1,9 +1,15 @@
 {
   "id": "1",
   "name": "The Roosevelt Room",
+  "slug": "the-roosevelt-room",
   "address": "307 W 5th St, Austin, TX 78701",
   "description": "Upscale cocktail bar with a speakeasy vibe, offering craft cocktails and a sophisticated atmosphere.",
   "rating": 4.7,
+  "ratings": {
+    "google": 4.6,
+    "yelp": 4.7,
+    "internal": 4.8
+  },
   "imageUrl": "https://images.unsplash.com/photo-1572116469696-31de0f17cc34?q=80&w=1000",
   "hasHappyHour": true,
   "happyHourDetails": "Tuesday-Saturday, 5-7pm: $2 off signature cocktails",

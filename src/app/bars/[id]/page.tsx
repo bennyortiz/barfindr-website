@@ -1,10 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { bars } from "@/lib/data";
+import { getBar } from "@/lib/bar-data";
 import { Button } from "@/core/components/ui/button";
 import { Badge } from "@/core/components/ui/badge";
-import { MapPin, Star, Navigation, Share2 } from "lucide-react";
+import { MapPin, Navigation, Share2 } from "lucide-react";
+import { BarRatings } from "@/features/bars/components/BarRatings";
 import { notFound, useParams } from "next/navigation";
 import { DetailPage } from "@/core/components/layout/DetailPage";
 import { Hero } from "@/core/components/ui/hero";
@@ -23,11 +24,12 @@ import Script from "next/script";
  * - Sidebar with location map and sharing options
  */
 export default function BarDetailPage() {
-  // Get the id from the URL params
+  // Get the slug from the URL params
   const params = useParams();
   // Convert params.id to string to ensure type safety
-  const id = String(params.id);
-  const bar = bars.find((b) => b.id === id);
+  const idOrSlug = String(params.id);
+  // Try to find the bar by ID or slug (for backward compatibility)
+  const bar = getBar(idOrSlug);
 
   // State to track if a share operation is in progress
   const [isSharing, setIsSharing] = useState(false);
@@ -55,10 +57,7 @@ export default function BarDetailPage() {
           <MapPin className="h-4 w-4 sm:h-5 sm:w-5 text-muted-foreground" />
           <span className="text-sm sm:text-base text-muted-foreground truncate max-w-[200px] sm:max-w-none">{bar.address}</span>
         </div>
-        <div className="flex items-center gap-1.5">
-          <Star className="h-4 w-4 sm:h-5 sm:w-5 fill-primary text-primary" />
-          <span className="text-sm sm:text-base font-medium">{bar.rating}</span>
-        </div>
+        <BarRatings bar={bar} />
       </div>
     </div>
   );
@@ -66,7 +65,7 @@ export default function BarDetailPage() {
   // Generate structured data for SEO
   const structuredData = generateBarStructuredData(
     bar,
-    `https://barfindr.com/bars/${bar.id}` // Replace with your actual domain
+    `https://barfindr.com/bars/${bar.slug}` // Replace with your actual domain
   );
 
   return (

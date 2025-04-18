@@ -3,7 +3,7 @@
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { Container } from '@/components/ui/container';
+import { Container } from '@/core/components/ui/container';
 import { cn } from '@/lib/utils';
 
 interface SimpleLayoutProps {

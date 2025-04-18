@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { PageLayout } from '@/core/components/layout/page-layout';
+import { PageLayout } from '@/core/components/layout/PageLayout';
 import { cn } from '@/lib/utils';
 
 interface DetailPageProps {
@@ -9,22 +9,22 @@ interface DetailPageProps {
    * The main content of the page
    */
   children: React.ReactNode;
-  
+
   /**
    * Hero section content (typically an image with overlay and title)
    */
   hero: React.ReactNode;
-  
+
   /**
    * Optional className for the content area
    */
   className?: string;
-  
+
   /**
    * Optional className for the hero section
    */
   heroClassName?: string;
-  
+
   /**
    * Whether to use a narrower content width
    * @default false
@@ -34,10 +34,10 @@ interface DetailPageProps {
 
 /**
  * DetailPage template for entity detail pages (bars, restaurants, etc.)
- * 
+ *
  * This template provides a standard layout for detail pages with a hero section
  * at the top and content below.
- * 
+ *
  * @example
  * <DetailPage
  *   hero={
@@ -67,7 +67,7 @@ export function DetailPage({
       )}>
         {hero}
       </div>
-      
+
       {/* Main content */}
       <div className={cn(
         "py-8 sm:py-10 md:py-12",

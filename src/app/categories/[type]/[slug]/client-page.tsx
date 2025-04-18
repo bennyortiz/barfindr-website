@@ -1,27 +1,19 @@
-import { Metadata } from "next";
-import { generateCategoryMetadata } from "@/lib/metadata-utils";
-import { generateBarListStructuredData, generateFAQStructuredData } from "@/lib/structured-data";
+"use client";
+
+import { useState, useEffect } from "react";
+import { useParams } from "next/navigation";
+import { StandardPage } from "@/core/components/layout/StandardPage";
+import { EnhancedBarCard } from "@/features/bars/components/EnhancedBarCard";
 import { bars } from "@/lib/data";
 import { Bar } from "@/lib/types";
+import { Suspense } from "react";
+import { motion } from "framer-motion";
+import { designSystem } from "@/lib/design-system";
+import { MapPin } from "lucide-react";
+import { EnhancedButton } from "@/core/components/ui/enhanced-button";
+import Link from "next/link";
+import { generateBarListStructuredData, generateFAQStructuredData } from "@/lib/structured-data";
 import Script from "next/script";
-
-// Client components
-import ClientPage from "./client-page";
-
-// This allows us to generate static metadata for each page
-export async function generateMetadata({ params }: { params: { attribute: string; value: string } }): Promise<Metadata> {
-  const { attribute, value } = params;
-
-  // Get attribute configuration or use defaults
-  const attributeConfig = attributeMappings[attribute as keyof typeof attributeMappings]?.[value as any] || {
-    title: `${value.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')} Bars in Austin`,
-    description: `Discover Austin bars with ${value.split('-').join(' ')}`,
-    filterFn: (bar: Bar) => true,
-    relatedAttributes: []
-  };
-
-  return generateCategoryMetadata(attribute, value, attributeConfig.title, attributeConfig.description);
-}
 
 // Define attribute mappings for SEO and filtering
 const attributeMappings = {
@@ -182,13 +174,13 @@ function BarsLoading() {
 // Bar listing content
 function AttributePageContent() {
   const params = useParams();
-  const attribute = String(params.attribute);
-  const value = String(params.value);
+  const type = String(params.type);
+  const slug = String(params.slug);
 
   // Get attribute configuration or use defaults
-  const attributeConfig = attributeMappings[attribute as keyof typeof attributeMappings]?.[value as any] || {
-    title: `${value.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')} Bars in Austin`,
-    description: `Discover Austin bars with ${value.split('-').join(' ')}`,
+  const attributeConfig = attributeMappings[type as keyof typeof attributeMappings]?.[slug as any] || {
+    title: `${slug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')} Bars in Austin`,
+    description: `Discover Austin bars with ${slug.split('-').join(' ')}`,
     filterFn: (bar: Bar) => true,
     relatedAttributes: []
   };
@@ -200,7 +192,7 @@ function AttributePageContent() {
   const relatedLinks = attributeConfig.relatedAttributes.map(relatedValue => {
     const relatedTitle = relatedValue.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
     return {
-      href: `/bars/${attribute}/${relatedValue}`,
+      href: `/categories/${type}/${relatedValue}`,
       title: relatedTitle
     };
   });
@@ -274,7 +266,7 @@ function AttributePageContent() {
         <h2>Exploring {attributeConfig.title}</h2>
         <p>
           Austin's bar scene is known for its diversity and vibrant atmosphere. When looking for
-          {value.includes('bar') ? '' : ' bars with'} {value.split('-').join(' ')},
+          {slug.includes('bar') ? '' : ' bars with'} {slug.split('-').join(' ')},
           visitors can expect unique experiences that showcase the city's distinctive character.
         </p>
         <p>
@@ -289,7 +281,7 @@ function AttributePageContent() {
           from bar snacks to full menus featuring local cuisine.
         </p>
         <p>
-          Whether you're a local or just visiting, exploring Austin's {value.split('-').join(' ')} bars
+          Whether you're a local or just visiting, exploring Austin's {slug.split('-').join(' ')} bars
           is a great way to experience the city's famous hospitality and unique character.
         </p>
       </section>
@@ -298,23 +290,56 @@ function AttributePageContent() {
 }
 
 /**
- * Dynamic attribute-based bar listing page
- *
- * This page automatically generates SEO-optimized content for different
- * bar attributes like features, neighborhoods, price ranges, etc.
+ * Client component for the attribute-based bar listing page
  */
-export default function AttributePage() {
+export default function ClientPage() {
   const params = useParams();
-  const attribute = String(params.attribute);
-  const value = String(params.value);
+  const type = String(params.type);
+  const slug = String(params.slug);
 
   // Get attribute configuration or use defaults
-  const attributeConfig = attributeMappings[attribute as keyof typeof attributeMappings]?.[value as any] || {
-    title: `${value.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')} Bars in Austin`,
-    description: `Discover Austin bars with ${value.split('-').join(' ')}`,
+  const attributeConfig = attributeMappings[type as keyof typeof attributeMappings]?.[slug as any] || {
+    title: `${slug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')} Bars in Austin`,
+    description: `Discover Austin bars with ${slug.split('-').join(' ')}`,
     filterFn: (bar: Bar) => true,
     relatedAttributes: []
   };
 
-    return <ClientPage />;
+  // Filter bars based on attribute for structured data
+  const filteredBars = bars.filter(attributeConfig.filterFn);
+
+  // Generate structured data for SEO
+  const listStructuredData = generateBarListStructuredData(
+    filteredBars,
+    `https://barfindr.com/categories/${type}/${slug}`, // Replace with your actual domain
+    attributeConfig.title
+  );
+
+  const faqStructuredData = generateFAQStructuredData(type, slug);
+
+  return (
+    <>
+      {/* Add structured data for SEO */}
+      <Script
+        id="bar-list-structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(listStructuredData) }}
+      />
+
+      <Script
+        id="faq-structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }}
+      />
+
+      <StandardPage
+        title={attributeConfig.title}
+        description={attributeConfig.description}
+      >
+        <Suspense fallback={<BarsLoading />}>
+          <AttributePageContent />
+        </Suspense>
+      </StandardPage>
+    </>
+  );
 }

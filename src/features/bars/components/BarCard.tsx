@@ -1,7 +1,8 @@
 import { Bar } from "@/lib/types";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/core/components/ui/card";
 import { Badge } from "@/core/components/ui/badge";
-import { MapPin, Star, Clock } from "lucide-react";
+import { MapPin, Clock } from "lucide-react";
+import { BarRatings } from "./BarRatings";
 import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
@@ -13,7 +14,7 @@ interface BarCardProps {
 
 export default function BarCard({ bar, className }: BarCardProps) {
   return (
-    <Link href={`/bars/${bar.id}`} className="block h-full">
+    <Link href={`/bars/${bar.slug}`} className="block h-full">
       <Card className={cn("overflow-hidden transition-all hover:shadow-md h-full flex flex-col", className)}>
         <div className="aspect-video w-full overflow-hidden relative">
           <Image
@@ -28,10 +29,7 @@ export default function BarCard({ bar, className }: BarCardProps) {
         <CardHeader className="p-3 sm:p-4">
           <div className="flex items-start justify-between">
             <CardTitle className="line-clamp-1 text-base sm:text-lg md:text-xl">{bar.name}</CardTitle>
-            <div className="flex items-center gap-1">
-              <Star className="h-3 w-3 sm:h-4 sm:w-4 fill-primary text-primary" />
-              <span className="text-xs sm:text-sm font-medium">{bar.rating}</span>
-            </div>
+            <BarRatings bar={bar} className="scale-90 origin-right" />
           </div>
           <CardDescription className="flex items-center gap-1 text-xs mt-1">
             <MapPin className="h-3 w-3 flex-shrink-0" />

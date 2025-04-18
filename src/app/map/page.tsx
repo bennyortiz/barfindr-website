@@ -1,11 +1,11 @@
 "use client";
 
-import { PageLayout } from "@/components/layout/page-layout";
+import { PageLayout } from "@/core/components/layout/PageLayout";
 import { bars } from "@/lib/data";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/core/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/core/components/ui/card";
 import { MapPin, Navigation } from "lucide-react";
-import { SimpleMap } from "@/components/map/SimpleMap";
+import { SimpleMap } from "@/features/maps/components/SimpleMap";
 
 export default function MapPage() {
   return (

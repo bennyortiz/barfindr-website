@@ -1,9 +1,15 @@
 {
   "id": "6",
   "name": "Firehouse Lounge",
+  "slug": "firehouse-lounge",
   "address": "605 Brazos St, Austin, TX 78701",
   "description": "Hidden speakeasy behind a bookcase in a hostel with craft cocktails and live music.",
   "rating": 4.4,
+  "ratings": {
+    "google": 4.3,
+    "yelp": 4.4,
+    "internal": 4.5
+  },
   "imageUrl": "https://images.unsplash.com/photo-1572116469696-31de0f17cc34?q=80&w=1000",
   "hasHappyHour": true,
   "happyHourDetails": "Monday-Friday, 5-8pm: $2 off all drinks",
@@ -16,9 +22,18 @@
     "Saturday": "7pm-2am",
     "Sunday": "7pm-2am"
   },
-  "tags": ["Speakeasy", "Live Music", "Craft Cocktails"],
+  "tags": [
+    "Speakeasy",
+    "Live Music",
+    "Craft Cocktails"
+  ],
   "location": {
     "lat": 30.269722,
     "lng": -97.741592
-  }
+  },
+  "type": "",
+  "priceRange": 2,
+  "neighborhood": "",
+  "features": [],
+  "zipCode": "78701"
 }

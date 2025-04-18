@@ -1,9 +1,15 @@
 {
   "id": "",
   "name": "",
+  "slug": "",
   "address": "",
   "description": "",
   "rating": 0.0,
+  "ratings": {
+    "google": 0.0,
+    "yelp": 0.0,
+    "internal": 0.0
+  },
   "imageUrl": "",
   "hasHappyHour": false,
   "happyHourDetails": "",
@@ -20,5 +26,10 @@
   "location": {
     "lat": 0,
     "lng": 0
-  }
+  },
+  "type": "",
+  "priceRange": 2,
+  "neighborhood": "",
+  "features": [],
+  "zipCode": ""
 }

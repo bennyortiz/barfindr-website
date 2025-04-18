@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { PageLayout } from '@/components/layout/page-layout';
+import { PageLayout } from '@/core/components/layout/page-layout';
 import { cn } from '@/lib/utils';
 
 interface DetailPageProps {

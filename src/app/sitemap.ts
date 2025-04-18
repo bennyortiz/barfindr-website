@@ -1,43 +1,43 @@
 import { MetadataRoute } from 'next';
 import { bars } from '@/lib/data';
 
-// Define all the attribute combinations we want to generate pages for
-const attributePages = [
+// Define all the category combinations we want to generate pages for
+const categoryPages = [
   // Features
-  { attribute: 'feature', value: 'patio' },
-  { attribute: 'feature', value: 'rooftop' },
-  { attribute: 'feature', value: 'live-music' },
-  { attribute: 'feature', value: 'dog-friendly' },
-  { attribute: 'feature', value: 'craft-beer' },
-  { attribute: 'feature', value: 'sports-bar' },
-  { attribute: 'feature', value: 'cocktail-bar' },
-  
+  { type: 'feature', slug: 'patio' },
+  { type: 'feature', slug: 'rooftop' },
+  { type: 'feature', slug: 'live-music' },
+  { type: 'feature', slug: 'dog-friendly' },
+  { type: 'feature', slug: 'craft-beer' },
+  { type: 'feature', slug: 'sports-bar' },
+  { type: 'feature', slug: 'cocktail-bar' },
+
   // Neighborhoods
-  { attribute: 'neighborhood', value: 'downtown' },
-  { attribute: 'neighborhood', value: 'east-austin' },
-  { attribute: 'neighborhood', value: 'south-congress' },
-  { attribute: 'neighborhood', value: 'rainey-street' },
-  
+  { type: 'neighborhood', slug: 'downtown' },
+  { type: 'neighborhood', slug: 'east-austin' },
+  { type: 'neighborhood', slug: 'south-congress' },
+  { type: 'neighborhood', slug: 'rainey-street' },
+
   // Price ranges
-  { attribute: 'price', value: 'cheap' },
-  { attribute: 'price', value: 'moderate' },
-  { attribute: 'price', value: 'upscale' },
-  
+  { type: 'price', slug: 'cheap' },
+  { type: 'price', slug: 'moderate' },
+  { type: 'price', slug: 'upscale' },
+
   // Bar types
-  { attribute: 'type', value: 'dive-bar' },
-  { attribute: 'type', value: 'wine-bar' },
-  { attribute: 'type', value: 'pub' },
-  { attribute: 'type', value: 'lounge' },
-  
+  { type: 'type', slug: 'dive-bar' },
+  { type: 'type', slug: 'wine-bar' },
+  { type: 'type', slug: 'pub' },
+  { type: 'type', slug: 'lounge' },
+
   // Occasions
-  { attribute: 'occasion', value: 'date-night' },
-  { attribute: 'occasion', value: 'group-outings' },
-  { attribute: 'occasion', value: 'happy-hour' },
+  { type: 'occasion', slug: 'date-night' },
+  { type: 'occasion', slug: 'group-outings' },
+  { type: 'occasion', slug: 'happy-hour' },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://barfindr.com'; // Replace with your actual domain
-  
+
   // Core pages
   const corePages = [
     {
@@ -65,22 +65,30 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
   ];
-  
+
   // Individual bar pages
   const barPages = bars.map(bar => ({
-    url: `${baseUrl}/bars/${bar.id}`,
+    url: `${baseUrl}/bars/${bar.slug}`,
     lastModified: new Date(),
     changeFrequency: 'weekly',
     priority: 0.7,
   }));
-  
-  // Attribute pages
-  const attributePageUrls = attributePages.map(page => ({
-    url: `${baseUrl}/bars/${page.attribute}/${page.value}`,
+
+  // Category pages
+  const categoryPageUrls = categoryPages.map(page => ({
+    url: `${baseUrl}/categories/${page.type}/${page.slug}`,
     lastModified: new Date(),
     changeFrequency: 'weekly',
     priority: 0.8,
   }));
-  
-  return [...corePages, ...barPages, ...attributePageUrls];
+
+  // Add the categories index page
+  const categoriesPage = {
+    url: `${baseUrl}/categories`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly',
+    priority: 0.9,
+  };
+
+  return [...corePages, ...barPages, ...categoryPageUrls, categoriesPage];
 }

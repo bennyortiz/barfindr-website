@@ -1,11 +1,11 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/core/components/ui/button";
 import BarCard from "@/components/BarCard";
 import { bars } from "@/lib/data";
 import { MapPin, Search, Clock, Star } from "lucide-react";
 import Link from "next/link";
-import { Container } from "@/components/ui/container";
+import { Container } from "@/core/components/ui/container";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 

@@ -2,10 +2,10 @@
 
 import { useState, useEffect, useMemo } from "react";
 import { useSearchParams } from "next/navigation";
-import { StandardPage } from "@/components/templates/StandardPage";
-import { EnhancedBarCard } from "@/components/bars/EnhancedBarCard";
-import { EnhancedSearch } from "@/components/ui/enhanced-search";
-import { EnhancedButton } from "@/components/ui/enhanced-button";
+import { StandardPage } from "@/core/components/layout/StandardPage";
+import { EnhancedBarCard } from "@/features/bars/components/EnhancedBarCard";
+import { EnhancedSearch } from "@/core/components/ui/enhanced-search";
+import { EnhancedButton } from "@/core/components/ui/enhanced-button";
 import { bars } from "@/lib/data";
 import { Bar } from "@/lib/types";
 import { cn } from "@/lib/utils";

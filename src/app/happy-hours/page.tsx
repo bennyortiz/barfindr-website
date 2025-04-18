@@ -3,10 +3,10 @@
 import { useState, useEffect, useMemo } from "react";
 import BarCard from "@/components/BarCard";
 import { bars } from "@/lib/data";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/core/components/ui/tabs";
 import { Clock, Calendar } from "lucide-react";
-import { PageLayout } from "@/components/layout/page-layout";
-import { Badge } from "@/components/ui/badge";
+import { PageLayout } from "@/core/components/layout/PageLayout";
+import { Badge } from "@/core/components/ui/badge";
 
 // Helper function to parse happy hour details and determine if a bar has happy hour on a specific day
 const hasHappyHourOnDay = (happyHourDetails: string, day: string): boolean => {

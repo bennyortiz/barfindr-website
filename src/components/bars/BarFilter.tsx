@@ -10,9 +10,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
+import { Input } from "@/core/components/ui/input";
+import { Button } from "@/core/components/ui/button";
+import { Badge } from "@/core/components/ui/badge";
 import { Search, SlidersHorizontal, X } from "lucide-react";
 import {
   Select,
@@ -21,7 +21,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from "@/core/components/ui/select";
 import { Bar } from "@/lib/types";
 
 /**

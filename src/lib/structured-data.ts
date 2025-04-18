@@ -65,7 +65,7 @@ export function generateBarListStructuredData(bars: Bar[], url: string, title: s
         '@type': 'BarOrPub',
         name: bar.name,
         image: bar.imageUrl,
-        url: `https://barfindr.com/bars/${bar.id}`, // Replace with your actual domain
+        url: `https://barfindr.com/bars/${bar.slug}`, // Replace with your actual domain
         address: {
           '@type': 'PostalAddress',
           streetAddress: bar.address,
@@ -89,15 +89,15 @@ export function generateBarListStructuredData(bars: Bar[], url: string, title: s
 /**
  * Generate FAQPage structured data for category pages
  */
-export function generateFAQStructuredData(attribute: string, value: string) {
-  // Format the attribute and value for display
-  const formattedValue = value.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
-  const formattedAttribute = attribute === 'feature' 
-    ? `with ${formattedValue}` 
-    : attribute === 'neighborhood' 
-      ? `in ${formattedValue}` 
+export function generateFAQStructuredData(type: string, slug: string) {
+  // Format the type and slug for display
+  const formattedValue = slug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+  const formattedAttribute = type === 'feature'
+    ? `with ${formattedValue}`
+    : type === 'neighborhood'
+      ? `in ${formattedValue}`
       : `that are ${formattedValue}`;
-  
+
   return {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
@@ -135,9 +135,9 @@ export function generateFAQStructuredData(attribute: string, value: string) {
  */
 function generateOpeningHours(hours: any) {
   if (!hours) return [];
-  
+
   const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-  
+
   return daysOfWeek.map(day => {
     const dayHours = hours[day.toLowerCase()];
     if (!dayHours || !dayHours.open) {
@@ -148,7 +148,7 @@ function generateOpeningHours(hours: any) {
         closes: '00:00'
       };
     }
-    
+
     return {
       '@type': 'OpeningHoursSpecification',
       dayOfWeek: day,

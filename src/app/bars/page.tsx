@@ -2,10 +2,10 @@
 
 import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
-import BarCard from "@/components/bars/BarCard";
-import BarFilter from "@/components/bars/BarFilter";
+import BarCard from "@/features/bars/components/BarCard";
+import BarFilter from "@/features/bars/components/BarFilter";
 import { bars } from "@/lib/data";
-import { PageLayout } from "@/components/layout/page-layout";
+import { PageLayout } from "@/core/components/layout/PageLayout";
 import { Bar } from "@/lib/types";
 
 // Wrap the component that uses useSearchParams in a Suspense boundary
