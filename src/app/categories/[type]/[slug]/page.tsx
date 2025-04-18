@@ -182,13 +182,13 @@ function BarsLoading() {
 // Bar listing content
 function AttributePageContent() {
   const params = useParams();
-  const attribute = String(params.attribute);
-  const value = String(params.value);
+  const type = String(params.type);
+  const slug = String(params.slug);
 
   // Get attribute configuration or use defaults
-  const attributeConfig = attributeMappings[attribute as keyof typeof attributeMappings]?.[value as any] || {
-    title: `${value.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')} Bars in Austin`,
-    description: `Discover Austin bars with ${value.split('-').join(' ')}`,
+  const attributeConfig = attributeMappings[type as keyof typeof attributeMappings]?.[slug as any] || {
+    title: `${slug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')} Bars in Austin`,
+    description: `Discover Austin bars with ${slug.split('-').join(' ')}`,
     filterFn: (bar: Bar) => true,
     relatedAttributes: []
   };
@@ -200,7 +200,7 @@ function AttributePageContent() {
   const relatedLinks = attributeConfig.relatedAttributes.map(relatedValue => {
     const relatedTitle = relatedValue.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
     return {
-      href: `/bars/${attribute}/${relatedValue}`,
+      href: `/categories/${type}/${relatedValue}`,
       title: relatedTitle
     };
   });
@@ -274,7 +274,7 @@ function AttributePageContent() {
         <h2>Exploring {attributeConfig.title}</h2>
         <p>
           Austin's bar scene is known for its diversity and vibrant atmosphere. When looking for
-          {value.includes('bar') ? '' : ' bars with'} {value.split('-').join(' ')},
+          {slug.includes('bar') ? '' : ' bars with'} {slug.split('-').join(' ')},
           visitors can expect unique experiences that showcase the city's distinctive character.
         </p>
         <p>
@@ -289,7 +289,7 @@ function AttributePageContent() {
           from bar snacks to full menus featuring local cuisine.
         </p>
         <p>
-          Whether you're a local or just visiting, exploring Austin's {value.split('-').join(' ')} bars
+          Whether you're a local or just visiting, exploring Austin's {slug.split('-').join(' ')} bars
           is a great way to experience the city's famous hospitality and unique character.
         </p>
       </section>
