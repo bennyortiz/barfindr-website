@@ -2,15 +2,15 @@
 
 import { useState } from "react";
 import { bars } from "@/lib/data";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
+import { Button } from "@/core/components/ui/button";
+import { Badge } from "@/core/components/ui/badge";
 import { MapPin, Star, Navigation, Share2 } from "lucide-react";
 import { notFound, useParams } from "next/navigation";
-import { DetailPage } from "@/components/templates/DetailPage";
-import { Hero } from "@/components/ui/hero";
-import { BarDetailTabs } from "@/components/bars/BarDetailTabs";
+import { DetailPage } from "@/core/components/layout/DetailPage";
+import { Hero } from "@/core/components/ui/hero";
+import { BarDetailTabs } from "@/features/bars/components/BarDetailTabs";
 import { toast } from "sonner";
-import { SimpleMap } from "@/components/map/SimpleMap";
+import { SimpleMap } from "@/features/maps/components/SimpleMap";
 import { generateBarStructuredData } from "@/lib/structured-data";
 import Script from "next/script";
 
@@ -98,14 +98,16 @@ export default function BarDetailPage() {
         <div className="lg:w-96 space-y-6 sm:space-y-8">
           <div className="rounded-lg border bg-card p-5 sm:p-6 shadow-sm">
             <h3 className="text-lg sm:text-xl font-medium mb-4 sm:mb-5">Location</h3>
-            <div className="aspect-video rounded-md mb-4 sm:mb-5 overflow-hidden shadow-sm">
-              <SimpleMap
-                bars={[bar]}
-                center={[bar.location.lat, bar.location.lng]}
-                zoom={15}
-                height="100%"
-                singleBar={true}
-              />
+            <div className="aspect-video rounded-md mb-4 sm:mb-5 overflow-hidden shadow-sm relative">
+              <div className="relative z-0 w-full h-full">
+                <SimpleMap
+                  bars={[bar]}
+                  center={[bar.location.lat, bar.location.lng]}
+                  zoom={15}
+                  height="100%"
+                  singleBar={true}
+                />
+              </div>
             </div>
             <Button
               className="w-full gap-2 text-base py-6 rounded-md hover:bg-primary/90 transition-colors"

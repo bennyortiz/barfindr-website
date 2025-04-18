@@ -74,7 +74,7 @@ export function SimpleMap({
   }
 
   return (
-    <div className="w-full rounded-lg border overflow-hidden" style={{ height }}>
+    <div className="w-full rounded-lg border overflow-hidden map-container" style={{ height }}>
       <MapComponent
         bars={bars}
         center={center}

@@ -189,9 +189,17 @@ header.sticky {
 .map-container {
   position: relative;
   z-index: 10; /* Lower than navbar but visible */
+  isolation: isolate; /* Create a new stacking context */
 }
 
 /* Reset Leaflet's default styles */
 .leaflet-container {
   z-index: unset !important;
+}
+
+/* Fix for mobile views to ensure map doesn't overlap content */
+@media (max-width: 1023px) {
+  .lg\:w-96 .map-container {
+    z-index: 1; /* Lower z-index on mobile */
+  }
 }
