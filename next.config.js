@@ -17,6 +17,20 @@ const nextConfig = {
     // !! WARN !!
     ignoreBuildErrors: true,
   },
+  webpack: (config) => {
+    // Ensure CSS modules work properly
+    config.module.rules.forEach((rule) => {
+      const { oneOf } = rule;
+      if (oneOf) {
+        oneOf.forEach((one) => {
+          if (!one.sideEffects && one.issuer && one.issuer.and) {
+            delete one.issuer;
+          }
+        });
+      }
+    });
+    return config;
+  },
   // Add redirects for backward compatibility
   async redirects() {
     return [

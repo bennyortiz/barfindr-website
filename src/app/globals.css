@@ -2,7 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-@import "../styles/apple-inspired.css";
+@import "../styles/apple-inspired-fixed.css";
+@import "../styles/leaflet-fixes.css";
 
 /* Theme variables */
 :root {

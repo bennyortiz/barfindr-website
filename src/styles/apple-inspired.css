@@ -5,7 +5,7 @@
  * focusing on typography, spacing, and subtle animations.
  */
 
-@layer base {
+/* Base styles */
   :root {
     /* Smooth scrolling for the entire page */
     scroll-behavior: smooth;
@@ -56,7 +56,7 @@
   }
 }
 
-@layer components {
+/* Component styles */
   /* Card hover effects */
   .card-hover {
     transition: transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1),
@@ -131,7 +131,7 @@
   }
 }
 
-@layer utilities {
+/* Utility styles */
   /* Text balance for better typography */
   .text-balance {
     text-wrap: balance;
@@ -177,11 +177,19 @@
 
   /* Improved focus rings */
   .focus-ring {
-    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2;
+    outline: none;
+  }
+  .focus-ring:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--primary), 0 0 0 4px white;
   }
 
   .focus-ring-inset {
-    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-0;
+    outline: none;
+  }
+  .focus-ring-inset:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--primary);
   }
 
   .focus-ring, .focus-ring-inset {
