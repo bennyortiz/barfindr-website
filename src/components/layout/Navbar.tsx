@@ -1,9 +1,9 @@
 /**
  * Navbar Component
- * 
+ *
  * Main navigation bar for the BarFindr application.
  * Includes responsive mobile menu, search functionality, and navigation links.
- * 
+ *
  * @component
  */
 
@@ -16,7 +16,6 @@ import { Input } from "@/components/ui/input";
 import { useState, useEffect, FormEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Container } from "@/components/ui/container";
-import { themeConfig } from "@/lib/theme-config";
 import { useRouter } from "next/navigation";
 
 export default function Navbar() {
@@ -30,7 +29,7 @@ export default function Navbar() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 10);
     };
-    
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -54,7 +53,7 @@ export default function Navbar() {
 
     document.addEventListener('click', handleClickOutside);
     document.addEventListener('keydown', handleEscapeKey);
-    
+
     return () => {
       document.removeEventListener('click', handleClickOutside);
       document.removeEventListener('keydown', handleEscapeKey);

@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import {
-  ArrowRight,
   Clock,
   MapPin,
   Star,
@@ -35,7 +34,7 @@ export function BarDetailTabs({ bar }: BarDetailTabsProps) {
             <TabsTrigger value="events">Events</TabsTrigger>
             <TabsTrigger value="reviews">Reviews</TabsTrigger>
           </TabsList>
-          
+
           <TabsContent value="about">
             <div className="grid gap-4">
               <div>
@@ -44,24 +43,24 @@ export function BarDetailTabs({ bar }: BarDetailTabsProps) {
                   {bar.description}
                 </p>
               </div>
-              
+
               <div className="grid gap-3 mt-4">
                 <div className="flex items-center gap-2">
                   <MapPin className="size-5 text-primary" />
                   <span>{bar.address}</span>
                 </div>
-                
+
                 <div className="flex items-center gap-2">
                   <Star className="size-5 text-primary" />
                   <span>Rating: {bar.rating}/5</span>
                 </div>
-                
+
                 <div className="flex items-center gap-2">
                   <Users className="size-5 text-primary" />
                   <span>Popular for: {bar.tags.join(", ")}</span>
                 </div>
               </div>
-              
+
               {bar.hasHappyHour && (
                 <div className="mt-6 p-4 bg-primary/5 rounded-lg border border-primary/10">
                   <h3 className="text-lg font-medium flex items-center gap-2 text-primary">
@@ -73,7 +72,7 @@ export function BarDetailTabs({ bar }: BarDetailTabsProps) {
               )}
             </div>
           </TabsContent>
-          
+
           <TabsContent value="hours">
             <div className="grid gap-4">
               <div>
@@ -82,7 +81,7 @@ export function BarDetailTabs({ bar }: BarDetailTabsProps) {
                   When you can visit {bar.name}
                 </p>
               </div>
-              
+
               <div className="grid gap-3 mt-4">
                 {Object.entries(bar.openingHours).map(([day, hours]) => (
                   <div key={day} className="flex justify-between items-center py-2 border-b border-border/40">
@@ -93,7 +92,7 @@ export function BarDetailTabs({ bar }: BarDetailTabsProps) {
               </div>
             </div>
           </TabsContent>
-          
+
           <TabsContent value="menu">
             <div className="grid gap-4">
               <div>
@@ -102,7 +101,7 @@ export function BarDetailTabs({ bar }: BarDetailTabsProps) {
                   Popular drinks and food at {bar.name}
                 </p>
               </div>
-              
+
               <div className="grid gap-6 mt-4">
                 <div>
                   <h4 className="font-medium flex items-center gap-2 mb-3">
@@ -124,7 +123,7 @@ export function BarDetailTabs({ bar }: BarDetailTabsProps) {
                     </div>
                   </div>
                 </div>
-                
+
                 <div>
                   <h4 className="font-medium flex items-center gap-2 mb-3">
                     <Utensils className="size-4 text-primary" />
@@ -148,16 +147,16 @@ export function BarDetailTabs({ bar }: BarDetailTabsProps) {
               </div>
             </div>
           </TabsContent>
-          
+
           <TabsContent value="events">
             <div className="grid gap-4">
               <div>
                 <h3 className="text-lg font-medium">Upcoming Events</h3>
                 <p className="text-muted-foreground mt-2">
-                  What's happening at {bar.name}
+                  What&apos;s happening at {bar.name}
                 </p>
               </div>
-              
+
               <div className="grid gap-4 mt-4">
                 <div className="p-4 border rounded-lg">
                   <div className="flex items-center gap-2 mb-2">
@@ -171,7 +170,7 @@ export function BarDetailTabs({ bar }: BarDetailTabsProps) {
                     Every Friday, 8:00 PM - 12:00 AM
                   </div>
                 </div>
-                
+
                 <div className="p-4 border rounded-lg">
                   <div className="flex items-center gap-2 mb-2">
                     <Calendar className="size-5 text-primary" />
@@ -184,7 +183,7 @@ export function BarDetailTabs({ bar }: BarDetailTabsProps) {
                     Every Wednesday, 7:00 PM - 9:00 PM
                   </div>
                 </div>
-                
+
                 <div className="p-4 border rounded-lg">
                   <div className="flex items-center gap-2 mb-2">
                     <Music className="size-5 text-primary" />
@@ -200,7 +199,7 @@ export function BarDetailTabs({ bar }: BarDetailTabsProps) {
               </div>
             </div>
           </TabsContent>
-          
+
           <TabsContent value="reviews">
             <div className="grid gap-4">
               <div>
@@ -209,7 +208,7 @@ export function BarDetailTabs({ bar }: BarDetailTabsProps) {
                   What people are saying about {bar.name}
                 </p>
               </div>
-              
+
               <div className="grid gap-4 mt-4">
                 <div className="p-4 border rounded-lg">
                   <div className="flex items-center justify-between mb-2">
@@ -223,13 +222,13 @@ export function BarDetailTabs({ bar }: BarDetailTabsProps) {
                     </div>
                   </div>
                   <p className="text-muted-foreground mb-2">
-                    "Amazing atmosphere and great cocktails! The happy hour deals are unbeatable."
+                    &quot;Amazing atmosphere and great cocktails! The happy hour deals are unbeatable.&quot;
                   </p>
                   <div className="text-xs text-muted-foreground">
                     2 weeks ago
                   </div>
                 </div>
-                
+
                 <div className="p-4 border rounded-lg">
                   <div className="flex items-center justify-between mb-2">
                     <div className="font-medium">Michael Rodriguez</div>
@@ -242,13 +241,13 @@ export function BarDetailTabs({ bar }: BarDetailTabsProps) {
                     </div>
                   </div>
                   <p className="text-muted-foreground mb-2">
-                    "Great spot for after-work drinks. The bartenders are friendly and knowledgeable."
+                    &quot;Great spot for after-work drinks. The bartenders are friendly and knowledgeable.&quot;
                   </p>
                   <div className="text-xs text-muted-foreground">
                     1 month ago
                   </div>
                 </div>
-                
+
                 <div className="p-4 border rounded-lg">
                   <div className="flex items-center justify-between mb-2">
                     <div className="font-medium">Emily Chen</div>
@@ -261,13 +260,13 @@ export function BarDetailTabs({ bar }: BarDetailTabsProps) {
                     </div>
                   </div>
                   <p className="text-muted-foreground mb-2">
-                    "Love the vibe here! The music is always on point and the drinks are delicious."
+                    &quot;Love the vibe here! The music is always on point and the drinks are delicious.&quot;
                   </p>
                   <div className="text-xs text-muted-foreground">
                     2 months ago
                   </div>
                 </div>
-                
+
                 <Button variant="outline" className="mt-2 w-full">
                   <MessageSquare className="mr-2 size-4" />
                   Write a Review

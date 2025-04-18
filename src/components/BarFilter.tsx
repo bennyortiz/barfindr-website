@@ -10,7 +10,6 @@ import {
   SelectContent,
   SelectGroup,
   SelectItem,
-  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
@@ -65,7 +64,7 @@ export default function BarFilter({ bars, onFilterChange, initialSearchQuery = "
     });
 
     // Sort the filtered bars
-    let sortedBars = [...filtered];
+    const sortedBars = [...filtered];
     if (sortBy === "rating-high") {
       sortedBars.sort((a, b) => b.rating - a.rating);
     } else if (sortBy === "rating-low") {

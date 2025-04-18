@@ -23,7 +23,7 @@ export default function Home() {
           />
           <Container className="absolute inset-0 z-20 flex flex-col items-center justify-center text-center">
             <h1 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl lg:text-6xl">
-              Discover Austin's <span className="text-primary">Best Bars</span>
+              Discover Austin&apos;s <span className="text-primary">Best Bars</span>
             </h1>
             <p className="mt-4 max-w-3xl text-base sm:text-lg md:text-xl text-muted-foreground">
               Find the perfect spot for drinks, happy hours, and good times in Austin, TX.
@@ -45,7 +45,7 @@ export default function Home() {
             <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
               <div className="text-center md:text-left mb-4 md:mb-0">
                 <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">Featured Bars</h2>
-                <p className="text-sm sm:text-base text-muted-foreground">Discover some of Austin's most popular bars</p>
+                <p className="text-sm sm:text-base text-muted-foreground">Discover some of Austin&apos;s most popular bars</p>
               </div>
               <Button variant="outline" className="w-full sm:w-auto" asChild>
                 <Link href="/bars">View All</Link>
@@ -106,7 +106,7 @@ export default function Home() {
             <div className="text-center">
               <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">Ready to Find Your Next Favorite Bar?</h2>
               <p className="mt-3 md:mt-4 text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
-                Start exploring Austin's vibrant bar scene today
+                Start exploring Austin&apos;s vibrant bar scene today
               </p>
               <Button size="default" className="mt-6 md:mt-8 w-full sm:w-auto">
                 <Search className="mr-2 h-4 w-4" /> Search Bars

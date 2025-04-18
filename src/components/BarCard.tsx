@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Badge } from "@/components/ui/badge";
 import { MapPin, Star, Clock } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 interface BarCardProps {
@@ -15,11 +16,13 @@ export default function BarCard({ bar, className }: BarCardProps) {
     <Link href={`/bars/${bar.id}`} className="block h-full">
       <Card className={cn("overflow-hidden transition-all hover:shadow-md h-full flex flex-col", className)}>
         <div className="aspect-video w-full overflow-hidden relative">
-          <img
+          <Image
             src={bar.imageUrl}
             alt={bar.name}
-            className="absolute inset-0 h-full w-full object-cover transition-transform hover:scale-105"
-            loading="lazy"
+            className="object-cover transition-transform hover:scale-105"
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            priority={false}
           />
         </div>
         <CardHeader className="p-3 sm:p-4">

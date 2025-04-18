@@ -1,6 +1,5 @@
 import React from 'react';
 import { cn } from '@/lib/utils';
-import { container } from '@/lib/theme-config';
 
 interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
@@ -8,19 +7,19 @@ interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
    * @default true
    */
   maxWidth?: boolean;
-  
+
   /**
    * Whether to add horizontal padding
    * @default true
    */
   padding?: boolean;
-  
+
   /**
    * Whether to center the container
    * @default true
    */
   center?: boolean;
-  
+
   /**
    * The HTML element to render
    * @default 'div'
@@ -46,12 +45,12 @@ export function Container({
       className={cn(
         // Base styles
         'w-full',
-        
+
         // Conditional styles
         maxWidth && 'max-w-[1536px]', // Max width from theme config
         padding && 'px-4 sm:px-6 md:px-8 lg:px-10', // Responsive padding
         center && 'mx-auto', // Center the container
-        
+
         // Custom className
         className
       )}

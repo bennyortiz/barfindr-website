@@ -1,9 +1,9 @@
 /**
  * BarFilter Component
- * 
+ *
  * Provides filtering and sorting functionality for the bars listing page.
  * Includes search, tag filtering, happy hour filtering, and sorting options.
- * 
+ *
  * @component
  */
 
@@ -19,7 +19,6 @@ import {
   SelectContent,
   SelectGroup,
   SelectItem,
-  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
@@ -81,7 +80,7 @@ export default function BarFilter({ bars, onFilterChange, initialSearchQuery = "
     });
 
     // Sort the filtered bars
-    let sortedBars = [...filtered];
+    const sortedBars = [...filtered];
     if (sortBy === "rating-high") {
       sortedBars.sort((a, b) => b.rating - a.rating);
     } else if (sortBy === "rating-low") {
@@ -146,7 +145,7 @@ export default function BarFilter({ bars, onFilterChange, initialSearchQuery = "
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
-                <SelectLabel>Sort by</SelectLabel>
+
                 <SelectItem value="default">Default</SelectItem>
                 <SelectItem value="rating-high">Rating (High to Low)</SelectItem>
                 <SelectItem value="rating-low">Rating (Low to High)</SelectItem>

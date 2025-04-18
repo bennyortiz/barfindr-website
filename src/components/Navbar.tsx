@@ -7,7 +7,6 @@ import { Input } from "@/components/ui/input";
 import { useState, useEffect, FormEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Container } from "@/components/ui/container";
-import { themeConfig } from "@/lib/theme-config";
 import { useRouter } from "next/navigation";
 
 export default function Navbar() {

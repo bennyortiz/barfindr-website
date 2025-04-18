@@ -1,5 +1,4 @@
 import { Bar } from "./types";
-import { loadBars } from "./bar-data-loader";
 
 // For client-side rendering, we need to have a static array
 // This is because Next.js can't use fs module on the client side

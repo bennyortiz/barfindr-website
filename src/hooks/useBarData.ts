@@ -1,11 +1,11 @@
 /**
  * useBarData Hook
- * 
+ *
  * Custom hook for working with bar data.
  * Provides filtering, sorting, and search functionality.
  */
 
-import { useState, useEffect, useMemo } from "react";
+import { useState, useMemo } from "react";
 import { Bar } from "@/lib/types";
 import { getCurrentDay } from "@/utils/date-utils";
 
@@ -96,7 +96,7 @@ export function useBarData({
     });
 
     // Sort the filtered bars
-    let sortedBars = [...filtered];
+    const sortedBars = [...filtered];
     if (sortBy === "rating-high") {
       sortedBars.sort((a, b) => b.rating - a.rating);
     } else if (sortBy === "rating-low") {
@@ -113,20 +113,21 @@ export function useBarData({
   // Get bars that are currently open
   const openBars = useMemo(() => {
     const currentDay = getCurrentDay();
-    const currentTime = new Date().toLocaleTimeString("en-US", {
+    // Get current time in a standardized format
+    new Date().toLocaleTimeString("en-US", {
       hour: "numeric",
       minute: "numeric",
       hour12: true
     }).toLowerCase();
-    
+
     return bars.filter(bar => {
       const hours = bar.openingHours[currentDay];
-      
+
       // Skip bars that are closed or have variable hours
       if (hours === "Closed" || hours === "Varies by bar") {
         return false;
       }
-      
+
       // For simplicity, we'll just check if the bar is open today
       // A more sophisticated implementation would check the actual time
       return hours !== "Closed";

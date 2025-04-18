@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useMemo, memo } from "react";
+import { useMemo, memo } from "react";
 import { Bar } from "@/lib/types";
 import dynamic from "next/dynamic";
 
@@ -10,10 +10,10 @@ const MapWithNoSSR = dynamic(
   () => import("./map-client").then((mod) => mod.MapClient),
   {
     ssr: false,
-    loading: ({ height }: { height: string }) => (
+    loading: () => (
       <div
         className="w-full rounded-lg border bg-muted overflow-hidden"
-        style={{ height }}
+        style={{ height: "500px" }}
       >
         <div className="flex items-center justify-center h-full">
           <p className="text-muted-foreground">Loading map...</p>

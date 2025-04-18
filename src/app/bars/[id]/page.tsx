@@ -1,29 +1,22 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { bars } from "@/lib/data";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { MapPin, Star, Navigation, Share2, Check } from "lucide-react";
-import { notFound } from "next/navigation";
+import { MapPin, Star, Navigation, Share2 } from "lucide-react";
+import { notFound, useParams } from "next/navigation";
 import { PageLayout } from "@/components/layout/page-layout";
 import { Container } from "@/components/ui/container";
 import { BarDetailTabs } from "@/components/bars/BarDetailTabs";
-import { use } from "react";
 import { toast } from "sonner";
 import { SimpleMap } from "@/components/map/SimpleMap";
 
-interface BarDetailPageProps {
-  params: {
-    id: string;
-  };
-}
-
-export default function BarDetailPage({ params }: BarDetailPageProps) {
-  // Use React.use to unwrap the params Promise
-  const unwrappedParams = use(params);
+export default function BarDetailPage() {
+  // Get the id from the URL params
+  const params = useParams();
   // Convert params.id to string to ensure type safety
-  const id = String(unwrappedParams.id);
+  const id = String(params.id);
   const bar = bars.find((b) => b.id === id);
 
   // State to track if a share operation is in progress

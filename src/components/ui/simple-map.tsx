@@ -10,10 +10,10 @@ import "leaflet/dist/leaflet.css";
 // Dynamically import the map component with no SSR
 const MapComponent = dynamic(() => import("./map-internal"), {
   ssr: false,
-  loading: ({ height }: { height: string }) => (
-    <div 
+  loading: () => (
+    <div
       className="w-full rounded-lg border bg-muted overflow-hidden"
-      style={{ height }}
+      style={{ height: "500px" }}
     >
       <div className="flex items-center justify-center h-full">
         <p className="text-muted-foreground">Loading map...</p>
@@ -48,7 +48,7 @@ export function SimpleMap({
 
   if (!isMounted) {
     return (
-      <div 
+      <div
         className="w-full rounded-lg border bg-muted overflow-hidden"
         style={{ height }}
       >
@@ -61,7 +61,7 @@ export function SimpleMap({
 
   return (
     <div className="w-full rounded-lg border overflow-hidden" style={{ height }}>
-      <MapComponent 
+      <MapComponent
         bars={bars}
         center={center}
         zoom={zoom}

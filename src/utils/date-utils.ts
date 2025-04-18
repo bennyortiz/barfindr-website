@@ -1,6 +1,6 @@
 /**
  * Date Utility Functions
- * 
+ *
  * A collection of utility functions for working with dates.
  */
 
@@ -40,17 +40,17 @@ export function isTimeInRange(time: string, range: string): boolean {
 
   // Parse the time range
   const [start, end] = range.split("-");
-  
+
   // Convert all times to minutes since midnight for easy comparison
   const timeMinutes = timeToMinutes(time);
   const startMinutes = timeToMinutes(start);
   const endMinutes = timeToMinutes(end);
-  
+
   // Handle ranges that cross midnight
   if (endMinutes < startMinutes) {
     return timeMinutes >= startMinutes || timeMinutes <= endMinutes;
   }
-  
+
   return timeMinutes >= startMinutes && timeMinutes <= endMinutes;
 }
 
@@ -62,14 +62,14 @@ export function isTimeInRange(time: string, range: string): boolean {
 function timeToMinutes(time: string): number {
   // Normalize the time format
   time = time.toLowerCase().trim();
-  
+
   let hours = 0;
   let minutes = 0;
-  let isPM = time.includes("pm");
-  
+  const isPM = time.includes("pm");
+
   // Remove am/pm and extract hours and minutes
   time = time.replace(/[ap]m/, "");
-  
+
   if (time.includes(":")) {
     const [h, m] = time.split(":");
     hours = parseInt(h);
@@ -78,13 +78,13 @@ function timeToMinutes(time: string): number {
     hours = parseInt(time);
     minutes = 0;
   }
-  
+
   // Convert to 24-hour format
   if (isPM && hours < 12) {
     hours += 12;
   } else if (!isPM && hours === 12) {
     hours = 0;
   }
-  
+
   return hours * 60 + minutes;
 }

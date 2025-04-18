@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import BarCard from "@/components/BarCard";
 import { bars } from "@/lib/data";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -36,7 +36,11 @@ const hasHappyHourOnDay = (happyHourDetails: string, day: string): boolean => {
 
 export default function HappyHoursPage() {
   const happyHourBars = bars.filter((bar) => bar.hasHappyHour);
-  const weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+
+  // Memoize the weekdays array to prevent it from changing on every render
+  const weekdays = useMemo(() => [
+    "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
+  ], []);
 
   // Get current day of the week
   const [currentDay, setCurrentDay] = useState<string>("");
@@ -48,7 +52,7 @@ export default function HappyHoursPage() {
     const dayOfWeek = weekdays[today.getDay() === 0 ? 6 : today.getDay() - 1]; // Adjust for Sunday being 0
     setCurrentDay(dayOfWeek);
     setSelectedDay(dayOfWeek.toLowerCase());
-  }, []);
+  }, [weekdays]);
 
   return (
     <PageLayout>
@@ -73,7 +77,7 @@ export default function HappyHoursPage() {
                 )}
               </p>
               <p className="text-xs sm:text-sm mt-1">
-                Select a day to see what's available or view all happy hours!
+                Select a day to see what&apos;s available or view all happy hours!
               </p>
             </div>
           </div>
