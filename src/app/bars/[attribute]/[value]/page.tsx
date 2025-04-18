@@ -1,19 +1,27 @@
-"use client";
-
-import { useState, useEffect } from "react";
-import { useParams } from "next/navigation";
-import { StandardPage } from "@/components/templates/StandardPage";
-import { EnhancedBarCard } from "@/components/bars/EnhancedBarCard";
+import { Metadata } from "next";
+import { generateCategoryMetadata } from "@/lib/metadata-utils";
+import { generateBarListStructuredData, generateFAQStructuredData } from "@/lib/structured-data";
 import { bars } from "@/lib/data";
 import { Bar } from "@/lib/types";
-import { Suspense } from "react";
-import { motion } from "framer-motion";
-import { designSystem } from "@/lib/design-system";
-import { MapPin } from "lucide-react";
-import { EnhancedButton } from "@/components/ui/enhanced-button";
-import Link from "next/link";
-import { generateBarListStructuredData, generateFAQStructuredData } from "@/lib/structured-data";
 import Script from "next/script";
+
+// Client components
+import ClientPage from "./client-page";
+
+// This allows us to generate static metadata for each page
+export async function generateMetadata({ params }: { params: { attribute: string; value: string } }): Promise<Metadata> {
+  const { attribute, value } = params;
+
+  // Get attribute configuration or use defaults
+  const attributeConfig = attributeMappings[attribute as keyof typeof attributeMappings]?.[value as any] || {
+    title: `${value.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')} Bars in Austin`,
+    description: `Discover Austin bars with ${value.split('-').join(' ')}`,
+    filterFn: (bar: Bar) => true,
+    relatedAttributes: []
+  };
+
+  return generateCategoryMetadata(attribute, value, attributeConfig.title, attributeConfig.description);
+}
 
 // Define attribute mappings for SEO and filtering
 const attributeMappings = {
@@ -308,41 +316,5 @@ export default function AttributePage() {
     relatedAttributes: []
   };
 
-  // Filter bars based on attribute for structured data
-  const filteredBars = bars.filter(attributeConfig.filterFn);
-
-  // Generate structured data for SEO
-  const listStructuredData = generateBarListStructuredData(
-    filteredBars,
-    `https://barfindr.com/bars/${attribute}/${value}`, // Replace with your actual domain
-    attributeConfig.title
-  );
-
-  const faqStructuredData = generateFAQStructuredData(attribute, value);
-
-  return (
-    <>
-      {/* Add structured data for SEO */}
-      <Script
-        id="bar-list-structured-data"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(listStructuredData) }}
-      />
-
-      <Script
-        id="faq-structured-data"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }}
-      />
-
-      <StandardPage
-        title={attributeConfig.title}
-        description={attributeConfig.description}
-      >
-        <Suspense fallback={<BarsLoading />}>
-          <AttributePageContent />
-        </Suspense>
-      </StandardPage>
-    </>
-  );
+    return <ClientPage />;
 }

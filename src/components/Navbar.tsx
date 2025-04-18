@@ -141,6 +141,10 @@ export default function Navbar() {
             Bars
             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
           </Link>
+          <Link href="/categories" className="transition-colors hover:text-primary relative group">
+            Categories
+            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+          </Link>
           <Link href="/map" className="transition-colors hover:text-primary relative group">
             Map
             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
@@ -219,6 +223,21 @@ export default function Navbar() {
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Bars
+                  </Link>
+                </motion.div>
+                <motion.div
+                  variants={{
+                    open: { y: 0, opacity: 1, scale: 1 },
+                    closed: { y: 30, opacity: 0, scale: 0.9 }
+                  }}
+                  transition={{ type: "spring", stiffness: 300, damping: 24 }}
+                >
+                  <Link
+                    href="/categories"
+                    className="block text-2xl font-medium text-foreground hover:text-primary transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Categories
                   </Link>
                 </motion.div>
                 <motion.div
