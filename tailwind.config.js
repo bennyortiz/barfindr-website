@@ -8,6 +8,18 @@ const config = {
     './src/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
+    fontFamily: {
+      sans: ['var(--font-geist-sans)', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+      mono: ['var(--font-geist-mono)', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
+    },
+    letterSpacing: {
+      tighter: '-0.03em',
+      tight: '-0.025em',
+      normal: '0',
+      wide: '0.025em',
+      wider: '0.05em',
+      widest: '0.1em',
+    },
     container: {
       center: true,
       padding: "2rem",
@@ -16,6 +28,17 @@ const config = {
       },
     },
     extend: {
+      boxShadow: {
+        'apple-sm': '0 1px 2px 0 rgba(0, 0, 0, 0.03), 0 1px 6px -1px rgba(0, 0, 0, 0.02)',
+        'apple-md': '0 4px 8px -2px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
+        'apple-lg': '0 12px 20px -3px rgba(0, 0, 0, 0.07), 0 4px 8px -2px rgba(0, 0, 0, 0.04)',
+      },
+      transitionTimingFunction: {
+        'apple': 'cubic-bezier(0.25, 0.1, 0.25, 1)',
+      },
+      backdropBlur: {
+        'apple': '10px',
+      },
       colors: {
         border: "var(--border)",
         input: "var(--input)",
@@ -84,7 +107,11 @@ const config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    require("./src/lib/tailwind-plugins").interactiveElements,
+    require("./src/lib/tailwind-plugins").typographyEnhancements,
+  ],
 }
 
 module.exports = config;
