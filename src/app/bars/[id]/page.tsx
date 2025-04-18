@@ -11,6 +11,8 @@ import { Hero } from "@/components/ui/hero";
 import { BarDetailTabs } from "@/components/bars/BarDetailTabs";
 import { toast } from "sonner";
 import { SimpleMap } from "@/components/map/SimpleMap";
+import { generateBarStructuredData } from "@/lib/structured-data";
+import Script from "next/script";
 
 /**
  * Bar detail page component
@@ -61,19 +63,33 @@ export default function BarDetailPage() {
     </div>
   );
 
+  // Generate structured data for SEO
+  const structuredData = generateBarStructuredData(
+    bar,
+    `https://barfindr.com/bars/${bar.id}` // Replace with your actual domain
+  );
+
   return (
-    <DetailPage
-      hero={
-        <Hero
-          imageUrl={bar.imageUrl}
-          imageAlt={`${bar.name} - Bar in Austin`}
-          height="50vh"
-          contentPosition="bottom"
-        >
-          {heroContent}
-        </Hero>
-      }
-    >
+    <>
+      {/* Add structured data for SEO */}
+      <Script
+        id="bar-structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+
+      <DetailPage
+        hero={
+          <Hero
+            imageUrl={bar.imageUrl}
+            imageAlt={`${bar.name} - Bar in Austin`}
+            height="50vh"
+            contentPosition="bottom"
+          >
+            {heroContent}
+          </Hero>
+        }
+      >
       <div className="flex flex-col gap-8 md:gap-10 lg:flex-row lg:gap-12">
         <div className="flex-1">
           <BarDetailTabs bar={bar} />
@@ -181,5 +197,6 @@ export default function BarDetailPage() {
         </div>
       </div>
     </DetailPage>
+    </>
   );
 }

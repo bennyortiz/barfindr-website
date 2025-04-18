@@ -163,6 +163,10 @@ export default function Navbar() {
             Bars
             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
           </Link>
+          <Link href="/categories" className="transition-colors hover:text-primary relative group">
+            Categories
+            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+          </Link>
           <Link href="/map" className="transition-colors hover:text-primary relative group">
             Map
             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
