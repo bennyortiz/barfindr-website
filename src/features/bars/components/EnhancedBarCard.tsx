@@ -10,24 +10,25 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { designSystem } from '@/lib/design-system';
+import { getBarUrl } from "@/lib/bar-data";
 
 interface EnhancedBarCardProps {
   /**
    * Bar data to display
    */
   bar: Bar;
-  
+
   /**
    * Optional className for the card
    */
   className?: string;
-  
+
   /**
    * Whether to show the card in a featured style
    * @default false
    */
   featured?: boolean;
-  
+
   /**
    * Animation delay for staggered animations
    * @default 0
@@ -37,7 +38,7 @@ interface EnhancedBarCardProps {
 
 /**
  * EnhancedBarCard component with Apple-inspired design
- * 
+ *
  * Displays a bar in a card format with smooth animations, refined typography,
  * and subtle interactions.
  */
@@ -56,9 +57,9 @@ export function EnhancedBarCard({
         delay: delay * 0.1,
         ease: designSystem.animation.timingFunctions["apple-standard"]
       }}
-      whileHover={{ 
+      whileHover={{
         y: -4,
-        transition: { 
+        transition: {
           duration: 0.3,
           ease: designSystem.animation.timingFunctions["apple-spring"]
         }
@@ -69,7 +70,7 @@ export function EnhancedBarCard({
         className
       )}
     >
-      <Link href={`/bars/${bar.id}`} className="outline-none focus-visible:ring-2 focus-visible:ring-primary-500 rounded-lg block">
+      <Link href={getBarUrl(bar)} className="outline-none focus-visible:ring-2 focus-visible:ring-primary-500 rounded-lg block">
         <Card className={cn(
           "overflow-hidden border-neutral-200 bg-white dark:bg-neutral-900 dark:border-neutral-800",
           "transition-all duration-300",
@@ -89,10 +90,10 @@ export function EnhancedBarCard({
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               priority={featured}
             />
-            
+
             {/* Gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            
+
             {/* Tags */}
             <div className="absolute top-3 left-3 flex flex-wrap gap-1.5 z-10">
               {bar.hasHappyHour && (
@@ -107,7 +108,7 @@ export function EnhancedBarCard({
               ))}
             </div>
           </div>
-          
+
           <CardContent className="p-4 sm:p-5">
             <div className="space-y-3">
               <div>
@@ -119,21 +120,21 @@ export function EnhancedBarCard({
                   <p className="text-sm line-clamp-1">{bar.address}</p>
                 </div>
               </div>
-              
+
               <div className="flex items-center justify-between">
                 <div className="flex items-center">
                   <div className="flex items-center bg-primary-50 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 rounded-md px-2 py-1">
                     <Star className="h-3.5 w-3.5 fill-primary-500 text-primary-500 mr-1" />
                     <span className="text-sm font-medium">{bar.rating}</span>
                   </div>
-                  
+
                   {bar.priceRange && (
                     <div className="ml-2 text-sm font-medium text-neutral-600 dark:text-neutral-400">
                       {Array(bar.priceRange).fill('$').join('')}
                     </div>
                   )}
                 </div>
-                
+
                 {bar.hasHappyHour && (
                   <div className="flex items-center text-neutral-600 dark:text-neutral-400">
                     <Clock className="h-3.5 w-3.5 mr-1" />
@@ -141,11 +142,11 @@ export function EnhancedBarCard({
                   </div>
                 )}
               </div>
-              
+
               {!featured && bar.tags.length > 0 && (
                 <div className="flex flex-wrap gap-1.5 pt-1">
                   {bar.tags.slice(0, 3).map((tag) => (
-                    <span 
+                    <span
                       key={tag}
                       className="text-xs px-2 py-0.5 bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 rounded-md"
                     >

@@ -6,6 +6,7 @@ import { BarRatings } from "./BarRatings";
 import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+import { getBarUrl } from "@/lib/bar-data";
 
 interface BarCardProps {
   bar: Bar;
@@ -14,7 +15,7 @@ interface BarCardProps {
 
 export default function BarCard({ bar, className }: BarCardProps) {
   return (
-    <Link href={`/bars/${bar.slug}`} className="block h-full">
+    <Link href={getBarUrl(bar)} className="block h-full">
       <Card className={cn("overflow-hidden transition-all hover:shadow-md h-full flex flex-col", className)}>
         <div className="aspect-video w-full overflow-hidden relative">
           <Image

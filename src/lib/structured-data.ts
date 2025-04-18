@@ -1,4 +1,5 @@
 import { Bar } from './types';
+import { getBarUrl } from './bar-data';
 
 /**
  * Generate LocalBusiness structured data for a bar
@@ -65,7 +66,7 @@ export function generateBarListStructuredData(bars: Bar[], url: string, title: s
         '@type': 'BarOrPub',
         name: bar.name,
         image: bar.imageUrl,
-        url: `https://barfindr.com/bars/${bar.slug}`, // Replace with your actual domain
+        url: getBarUrl(bar, true), // Get absolute URL
         address: {
           '@type': 'PostalAddress',
           streetAddress: bar.address,

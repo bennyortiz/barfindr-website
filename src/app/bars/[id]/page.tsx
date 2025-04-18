@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { getBar } from "@/lib/bar-data";
+import { getBar, getBarUrl } from "@/lib/bar-data";
 import { Button } from "@/core/components/ui/button";
 import { Badge } from "@/core/components/ui/badge";
 import { MapPin, Navigation, Share2 } from "lucide-react";
@@ -65,7 +65,7 @@ export default function BarDetailPage() {
   // Generate structured data for SEO
   const structuredData = generateBarStructuredData(
     bar,
-    `https://barfindr.com/bars/${bar.slug}` // Replace with your actual domain
+    getBarUrl(bar, true) // Get absolute URL
   );
 
   return (
