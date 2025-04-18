@@ -1,0 +1,24 @@
+{
+  "id": "5",
+  "name": "The White Horse",
+  "address": "500 Comal St, Austin, TX 78702",
+  "description": "Honky-tonk bar with live country music, dancing, and a large outdoor patio.",
+  "rating": 4.6,
+  "imageUrl": "https://images.unsplash.com/photo-1566417713940-fe7c737a9ef2?q=80&w=1000",
+  "hasHappyHour": true,
+  "happyHourDetails": "Daily, 3-7pm: $2 Lone Star, $3 well drinks",
+  "openingHours": {
+    "Monday": "3pm-2am",
+    "Tuesday": "3pm-2am",
+    "Wednesday": "3pm-2am",
+    "Thursday": "3pm-2am",
+    "Friday": "3pm-2am",
+    "Saturday": "3pm-2am",
+    "Sunday": "3pm-2am"
+  },
+  "tags": ["Live Music", "Dancing", "Honky-Tonk"],
+  "location": {
+    "lat": 30.260183,
+    "lng": -97.731735
+  }
+}
