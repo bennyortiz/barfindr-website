@@ -2,8 +2,8 @@
 
 import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
-import BarCard from "@/features/bars/components/BarCard";
-import BarFilter from "@/features/bars/components/BarFilter";
+import { BarCard } from "@/features/bars/components/BarCard";
+import { BarFilter } from "@/features/bars/components/BarFilter";
 import { bars } from "@/lib/data";
 import { PageLayout } from "@/core/components/layout/PageLayout";
 import { Bar } from "@/lib/types";

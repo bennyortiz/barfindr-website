@@ -186,7 +186,7 @@ export default function Navbar() {
       <AnimatePresence mode="wait">
         {isMenuOpen && (
           <motion.div
-            className="fixed inset-0 bg-background/95 backdrop-blur-md z-40 md:hidden mobile-menu flex flex-col"
+            className="fixed inset-0 bg-background z-40 md:hidden mobile-menu flex flex-col"
             initial={{ opacity: 0, height: 0, y: -20 }}
             animate={{ opacity: 1, height: "100vh", y: 0 }}
             exit={{ opacity: 0, height: 0, y: -20 }}

@@ -30,7 +30,7 @@ interface BarFilterProps {
   initialSearchQuery?: string;
 }
 
-export default function BarFilter({ bars, onFilterChange, initialSearchQuery = "" }: BarFilterProps) {
+export function BarFilter({ bars, onFilterChange, initialSearchQuery = "" }: BarFilterProps) {
   const [searchQuery, setSearchQuery] = useState(initialSearchQuery);
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [showHappyHourOnly, setShowHappyHourOnly] = useState(false);

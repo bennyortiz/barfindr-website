@@ -1,8 +1,8 @@
+@import "../styles/leaflet-fixes.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import "../styles/leaflet-fixes.css";
 
 /* Theme variables */
 :root {
@@ -38,6 +38,21 @@
   --color-popover-foreground: var(--popover-foreground);
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
+
+/* Reusable utility class for rounded card images */
+.card-image {
+  @apply rounded-xl overflow-hidden;
+}
+
+
+body {
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+}
+
+code, pre {
+  font-family: var(--font-geist-mono), monospace;
+}
+
   --color-card: var(--card);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -47,25 +62,25 @@
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.7 0.25 330); /* Pink primary */
+  --background: oklch(0.145 0 0); /* #252525 dark background */
+  --foreground: oklch(0.985 0 0); /* #FAFAFA light text */
+  --card: oklch(0.269 0 0); /* #444444 secondary background */
+  --card-foreground: oklch(0.985 0 0); /* #FAFAFA */
+  --popover: oklch(0.269 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.7 0.25 330); /* Pink primary #D45CA0 */
   --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
   --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.65 0.28 330); /* Pink accent */
-  --accent-foreground: oklch(0.205 0 0);
+  --accent: oklch(0.65 0.28 330); /* Pink accent #E06CB3 */
+  --accent-foreground: oklch(0.985 0 0);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.7 0.25 330 / 50%); /* Pink ring */
-  --chart-1: oklch(0.7 0.25 330); /* Pink */
+  --border: oklch(0.269 0 0);
+  --input: oklch(0.269 0 0);
+  --ring: oklch(0.7 0.25 330 / 50%);
+  --chart-1: oklch(0.7 0.25 330);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
@@ -203,4 +218,40 @@ header.sticky {
   .lg\:w-96 .map-container {
     z-index: 1; /* Lower z-index on mobile */
   }
+}
+
+/* Image container utility class */
+.image-container {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--muted);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-container img,
+.image-container > span {
+  object-fit: cover !important;
+  object-position: center !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.image-container img {
+  transition: transform 0.3s ease;
+}
+
+/* Apply hover effect only if not disabled */
+.image-container:not(.no-hover):hover img {
+  transform: scale(1.05);
+}
+
+/* Placeholder for when image is loading */
+.image-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--muted);
+  z-index: -1;
 }

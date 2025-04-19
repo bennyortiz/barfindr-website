@@ -40,7 +40,7 @@ export default function BarDetailPage() {
 
   // Hero content with bar information
   const heroContent = (
-    <div className="flex flex-col gap-2 sm:gap-3 max-w-3xl">
+    <div className="flex flex-col gap-2 sm:gap-3">
       <div className="flex flex-wrap items-center gap-2">
         {bar.hasHappyHour && (
           <Badge className="bg-primary text-primary-foreground text-xs sm:text-sm py-1 px-3">Happy Hour</Badge>

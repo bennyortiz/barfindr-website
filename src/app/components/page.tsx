@@ -2,7 +2,7 @@
 
 import { PageLayout } from "@/core/components/layout/PageLayout";
 import { TabsWithCard } from "@/core/components/ui/tabs-with-card";
-import { BarDetailTabs } from "@/components/BarDetailTabs";
+import { BarDetailTabs } from "@/features/bars/components/BarDetailTabs";
 import { bars } from "@/lib/data";
 
 export default function ComponentsPage() {

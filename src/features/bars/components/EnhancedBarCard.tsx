@@ -78,14 +78,13 @@ export function EnhancedBarCard({
           "h-full"
         )}>
           <div className={cn(
-            "relative overflow-hidden",
+            "image-container",
             featured ? "aspect-[21/9] md:aspect-[21/9]" : "aspect-[4/3]"
           )}>
             <div className="absolute inset-0 bg-neutral-200 dark:bg-neutral-800 animate-pulse" />
             <Image
               src={bar.imageUrl}
               alt={bar.name}
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
               fill
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               priority={featured}

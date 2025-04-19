@@ -1,13 +1,12 @@
 "use client";
 
 import { Button } from "@/core/components/ui/button";
-import BarCard from "@/components/BarCard";
+import { BarCard } from "@/features/bars/components/BarCard";
 import { bars } from "@/lib/data";
 import { MapPin, Search, Clock, Star } from "lucide-react";
 import Link from "next/link";
 import { Container } from "@/core/components/ui/container";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import { Navbar, Footer } from "@/core/components/layout";
 
 export default function Home() {
   return (

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useMemo } from "react";
-import BarCard from "@/components/BarCard";
+import { BarCard } from "@/features/bars/components/BarCard";
 import { bars } from "@/lib/data";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/core/components/ui/tabs";
 import { Clock, Calendar } from "lucide-react";

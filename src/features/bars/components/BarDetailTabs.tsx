@@ -10,7 +10,8 @@ import {
   Utensils,
   Music,
   Calendar,
-  MessageSquare
+  MessageSquare,
+  Star
 } from "lucide-react"
 import { BarRatings } from "./BarRatings"
 import { Bar } from "@/lib/types"
